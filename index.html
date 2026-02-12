@@ -41,6 +41,7 @@
     <main>
         <!-- Hero Section -->
         <section class="hero">
+            <div class="hero__overlay"></div>
             <div class="container hero__container">
                 <div class="hero__content">
                     <h1 class="hero__title">
@@ -51,12 +52,8 @@
                         生成AI開発支援ツール「Antigravity」を活用し、設計から実装、GitHub Pages での公開までを一気に習得。専門職に頼らず、自社サイトを内製管理できるスキルを手に入れませんか？
                     </p>
                     <div class="hero__actions">
-                        <a href="#contact" class="btn btn--primary btn--large">研修に申し込む</a>
-                        <a href="#contact" class="btn btn--outline btn--large">資料をダウンロード</a>
+                        <a href="#contact" class="btn btn--primary btn--large">お問い合わせ・お申し込み</a>
                     </div>
-                </div>
-                <div class="hero__image">
-                    <div class="hero__visual-placeholder"></div>
                 </div>
             </div>
         </section>
@@ -148,14 +145,44 @@
             </div>
         </section>
 
-        <!-- CTA Section -->
-        <section id="contact" class="cta-section">
-            <div class="container text-center">
-                <h2 class="cta-title">理想の Web サイトを、<span>AI と共に自ら生み出す。</span></h2>
-                <p class="cta-text">まずは資料請求、または研修へお申し込みください。</p>
-                <div class="cta-buttons">
-                    <a href="#" class="btn btn--primary btn--large">研修に申し込む</a>
-                    <a href="#" class="btn btn--secondary btn--large">資料を請求する</a>
+        <!-- Contact Section (Integrated Form) -->
+        <section id="contact" class="section section--light">
+            <div class="container">
+                <div class="contact-box">
+                    <h2 class="section-title">資料請求・お申し込み</h2>
+                    <p class="text-center mb-40">コースに関する資料請求や、研修へのお申し込みはこちらのフォームよりお願いいたします。</p>
+
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">お名前<span>必須</span></label>
+                            <input type="text" id="name" name="name" placeholder="例：山田 太郎" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">メールアドレス<span>必須</span></label>
+                            <input type="email" id="email" name="email" placeholder="例：example@kikagaku.co.jp" required>
+                        </div>
+                        <div class="form-group">
+                            <label>お問い合わせ種類<span>必須</span></label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="type" value="request" checked> 資料請求
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="type" value="apply"> 研修に申し込む
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">お問い合わせ内容</label>
+                            <textarea id="message" name="message" rows="5" placeholder="ご質問やご相談があれば入力してください"></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn--primary btn--large w-full">送信する</button>
+                        </div>
+                    </form>
+                    <div id="form-success" class="form-success" style="display: none;">
+                        <p>お問い合わせありがとうございます。内容を確認の上、担当者よりご連絡いたします。</p>
+                    </div>
                 </div>
             </div>
         </section>

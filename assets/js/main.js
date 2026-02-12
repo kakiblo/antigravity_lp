@@ -15,4 +15,23 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Form submission handling
+    const contactForm = document.getElementById('contact-form');
+    const formSuccess = document.getElementById('form-success');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Simulate form submission
+            contactForm.style.display = 'none';
+            formSuccess.style.display = 'block';
+
+            // Scroll to the success message
+            window.scrollTo({
+                top: document.getElementById('contact').offsetTop - 80,
+                behavior: 'smooth'
+            });
+        });
+    }
 });
