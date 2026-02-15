@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const formSuccess = document.getElementById('form-success');
 
     // 【重要】ここにデプロイした GAS のウェブアプリ URL を設定してください
-    const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbz3XJq1g7he6Gj4RSDNnEI_XPuVWWkHCZyjSQO19kspSDO2JGQHXkKwCFbfCL0sn4o2/exec';
+    const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzxmXJgfbzRKJWkqBEnDZxGurZ3VXGaPDoEXQifXir1D9WwspouI8zoVIyReIPZHn7U/exec';
 
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
