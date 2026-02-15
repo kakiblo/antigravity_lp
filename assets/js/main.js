@@ -36,11 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = new FormData(contactForm);
             const data = Object.fromEntries(formData.entries());
 
-            // GAS への送信（URLが設定されていない場合はシミュレーションのみ実行）
-            if (GAS_WEB_APP_URL === 'https://script.google.com/macros/s/AKfycbymmnizbLp7p9Q2Z91YuW0lNP7LZiXSAbKM6gjOUcnhnilL9cOfzL8vJgQogmp1hh7I/exec' || GAS_WEB_APP_URL === '') {
-                // デフォルトURLまたは空の場合はシミュレーション
-                // ※ユーザーが設定したURLの場合はここを通らず fetch へ
-                console.warn('GAS_WEB_APP_URL is not set or is default. Simulating success.');
+            // GAS への送信（URLが未設定の場合のみシミュレーションを実行）
+            if (GAS_WEB_APP_URL.includes('YOUR_GAS_WEB_APP_URL_HERE') || GAS_WEB_APP_URL === '') {
+                console.warn('GAS_WEB_APP_URL is not set. Simulating success.');
                 setTimeout(() => {
                     handleSuccess();
                 }, 1000);
