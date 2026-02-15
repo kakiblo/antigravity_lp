@@ -47,20 +47,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
             fetch(GAS_WEB_APP_URL, {
                 method: 'POST',
+                mode: 'no-cors', // CORS エラー回避のための設定
                 body: data,
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 }
             })
-                .then(response => response.json())
-                .then(result => {
-                    if (result.status === 'success') {
-                        handleSuccess();
-                    } else {
-                        alert('送信に失敗しました。時間をおいて再度お試しください。');
-                        submitBtn.disabled = false;
-                        submitBtn.innerText = originalBtnText;
-                    }
+                .then(() => {
+                    // mode: 'no-cors' ではレスポンスの詳細を読み取れませんが、
+                    // リクエストが送信されれば Promise が解決するため、成功として扱います。
+                    handleSuccess();
                 })
                 .catch(error => {
                     console.error('Error:', error);
