@@ -34,11 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.innerText = '送信中...';
 
             const formData = new FormData(contactForm);
-            const data = new URLSearchParams(formData);
+            const data = Object.fromEntries(formData.entries());
 
             // GAS への送信（URLが設定されていない場合はシミュレーションのみ実行）
-            if (GAS_WEB_APP_URL === 'YOUR_GAS_WEB_APP_URL_HERE') {
-                console.warn('GAS_WEB_APP_URL is not set. Simulating success.');
+            if (GAS_WEB_APP_URL === 'https://script.google.com/macros/s/AKfycbymmnizbLp7p9Q2Z91YuW0lNP7LZiXSAbKM6gjOUcnhnilL9cOfzL8vJgQogmp1hh7I/exec' || GAS_WEB_APP_URL === '') {
+                // デフォルトURLまたは空の場合はシミュレーション
+                // ※ユーザーが設定したURLの場合はここを通らず fetch へ
+                console.warn('GAS_WEB_APP_URL is not set or is default. Simulating success.');
                 setTimeout(() => {
                     handleSuccess();
                 }, 1000);
@@ -47,11 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             fetch(GAS_WEB_APP_URL, {
                 method: 'POST',
-                mode: 'no-cors', // CORS エラー回避のための設定
-                body: data,
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
+                mode: 'no-cors',
+                body: JSON.stringify(data)
             })
                 .then(() => {
                     // mode: 'no-cors' ではレスポンスの詳細を読み取れませんが、
